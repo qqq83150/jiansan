@@ -10,4 +10,6 @@ public interface IAccountService {
 
 	List<Account> findAll();
 
+	List<Account> findByWeixinId(int id);
+
 }

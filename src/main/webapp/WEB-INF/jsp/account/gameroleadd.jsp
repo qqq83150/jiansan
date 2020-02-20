@@ -7,6 +7,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"  href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet"  href="${pageContext.request.contextPath}/select2/css/select2.min.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/select2/js/select2.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('[name="accountId"]').select2()
+})
+</script>
 </head>
 <body>
 	<h1>添加角色</h1>

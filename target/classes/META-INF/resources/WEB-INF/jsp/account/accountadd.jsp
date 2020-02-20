@@ -7,6 +7,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"  href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet"  href="${pageContext.request.contextPath}/select2/css/select2.min.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/select2/js/select2.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('[name="weixinId"]').select2()
+})
+</script>
 </head>
 <body>
 	<h3>添加游戏帐号</h3>
@@ -23,7 +31,7 @@
 		</div>
 		<div class="form-group">
 			<label class="control-label col-lg-4">微信：</label>
-			<label class="col-lg-8"><select name="weixinId" class="form-control">
+			<label class="col-lg-8"><select name="weixinId" class="form-control select2">
 			<c:forEach items="${list }" var="wx">
 				<option value="${wx.id }">${wx.realName }</option>
 			</c:forEach>

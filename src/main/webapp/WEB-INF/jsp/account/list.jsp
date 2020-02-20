@@ -21,8 +21,8 @@
 			<td>游戏帐号</td>
 			<td>游戏密码</td>
 			<td>微信号</td>
-			<!-- <td>姓名</td>
-			<td>手机号</td>
+			<td>微信名</td>
+			<!-- <td>手机号</td>
 			<td>操作</td> -->
 		</tr>
 		<c:forEach items="${list }" var="gameRole" varStatus="s">
@@ -32,8 +32,8 @@
 			<td>${gameRole.account.username }</td>
 			<td>${gameRole.account.password }</td>
 			<td>${gameRole.account.weixin.weixinName }</td>
-			<%-- <td>${gameRole.account.weixin.realName }</td>
-			<td>${gameRole.account.weixin.phone }</td>
+			<td>${gameRole.account.weixin.realName }</td>
+			<%--<td>${gameRole.account.weixin.phone }</td>
 			<td>操作</td> --%>
 		</tr>
 		</c:forEach>

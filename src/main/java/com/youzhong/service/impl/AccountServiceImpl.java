@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.youzhong.dao.AccountMapper;
 import com.youzhong.entity.Account;
+import com.youzhong.entity.AccountExample;
 import com.youzhong.service.IAccountService;
 
 @Service
@@ -26,6 +27,13 @@ public class AccountServiceImpl implements IAccountService {
 	public List<Account> findAll() {
 		// TODO Auto-generated method stub
 		return accountMapper.selectByExample(null);
+	}
+	@Override
+	public List<Account> findByWeixinId(int id) {
+		// TODO Auto-generated method stub
+		AccountExample example = new AccountExample();
+		example.createCriteria().andWeixinIdEqualTo(id);
+		return accountMapper.selectByExample(example);
 	}
 
 }

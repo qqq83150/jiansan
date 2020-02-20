@@ -25,6 +25,7 @@ public class RealmConfiguration {
 		filterChainDefinition.addPathDefinition("/favicon.ico", "anon");
 		filterChainDefinition.addPathDefinition("/js/**", "anon");
 		filterChainDefinition.addPathDefinition("/bootstrap/**", "anon");
+		filterChainDefinition.addPathDefinition("/select2/**", "anon");
 		filterChainDefinition.addPathDefinition("/**", "authc");
 //		filterChainDefinition.addPathDefinition("/user/**", "roles,perms");
 //		filterChainDefinition.addPathDefinition("/role/**", "roles,perms");

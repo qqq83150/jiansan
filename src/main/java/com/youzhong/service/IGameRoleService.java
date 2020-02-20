@@ -10,4 +10,6 @@ public interface IGameRoleService {
 
 	void save(GameRole gameRole);
 
+	List<GameRole> findByAccountId(int id);
+
 }

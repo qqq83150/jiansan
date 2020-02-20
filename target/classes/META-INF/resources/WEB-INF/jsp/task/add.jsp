@@ -47,19 +47,19 @@ $(function(){
 	<form action="${pageContext.request.contextPath}/task/add" method="post">
 		<div class="form-group">
 			<label class="control-label col-lg-4">角色:</label>
-			<label class="col-lg-8"><select name="gameRoleId"></select></label>
+			<label class="col-lg-8"><select name="gameRoleId" class="form-control"></select></label>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-lg-4">活动:</label>
-			<label class="col-lg-8"><select name="taskTypeId"></select></label>
+			<label class="col-lg-8"><select name="taskTypeId" class="form-control"></select></label>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-lg-4">开始日期:</label>
-			<label class="col-lg-8"><input type="date" name="beginDate"></label>
+			<label class="col-lg-8"><input type="date" name="beginDate" class="form-control"></label>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-lg-4">结束日期:</label>
-			<label class="col-lg-8"><input type="date" name="endDate"></label>
+			<label class="col-lg-8"><input type="date" name="endDate" class="form-control"></label>
 		</div>
 		<div class="col-lg-offset-4 col-lg-8">
 		<input type="submit" value="添加" class="btn btn-success">

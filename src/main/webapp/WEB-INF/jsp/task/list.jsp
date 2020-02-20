@@ -92,7 +92,7 @@ $(function(){
 		</div>
 		<div class="form-group">
 			<label for="taskDate" class="col-lg-2 control-label">任务日期：</label>
-			<label class="col-lg-10"><input type="date" name="taskDate" value='<fmt:formatDate value="${vo.taskDate}" pattern="yyyy-MM-dd"/>'></label>
+			<label class="col-lg-2"><input type="date" name="taskDate" class="form-control" value='<fmt:formatDate value="${vo.taskDate}" pattern="yyyy-MM-dd"/>'></label>
 		</div>
 		<div class="form-group">
 			<label for="taskStatus" class="col-lg-2 control-label">任务状态：</label><span id="taskStatus" class="col-lg-10"></span>
