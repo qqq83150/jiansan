@@ -18,7 +18,11 @@
 			<td>角色名</td>
 			<td>游戏帐号</td>
 			<td>游戏密码</td>
+<<<<<<< HEAD
 			<td>微信名</td>
+=======
+			<td>微信号</td>
+>>>>>>> 1398c9726c7ae0c272e65c7d8801dfe75e816bdb
 			<!-- <td>姓名</td>
 			<td>手机号</td>
 			<td>操作</td> -->
@@ -29,7 +33,11 @@
 			<td>${gameRole.name }</td>
 			<td>${gameRole.account.username }</td>
 			<td>${gameRole.account.password }</td>
+<<<<<<< HEAD
 			<td>${gameRole.account.weixin.realName }</td>
+=======
+			<td>${gameRole.account.weixin.weixinName }</td>
+>>>>>>> 1398c9726c7ae0c272e65c7d8801dfe75e816bdb
 			<%-- <td>${gameRole.account.weixin.realName }</td>
 			<td>${gameRole.account.weixin.phone }</td>
 			<td>操作</td> --%>

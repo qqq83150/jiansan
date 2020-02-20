@@ -17,7 +17,10 @@
 			<td>序号</td>
 			<td>帐号</td>
 			<td>密码</td>
+<<<<<<< HEAD
 			<td>微信名</td>
+=======
+>>>>>>> 1398c9726c7ae0c272e65c7d8801dfe75e816bdb
 			<!-- <td>操作</td> -->
 		</tr>
 		<c:forEach items="${list }" var="account" varStatus="s">
@@ -25,7 +28,10 @@
 			<td>${s.count }</td>
 			<td>${account.username }</td>
 			<td>${account.password }</td>
+<<<<<<< HEAD
 			<td>${account.weixin.realName}</td>
+=======
+>>>>>>> 1398c9726c7ae0c272e65c7d8801dfe75e816bdb
 			<!-- <td>操作</td> -->
 		</tr>
 		</c:forEach>

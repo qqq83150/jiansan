@@ -12,17 +12,30 @@
 	<div class="row">
 	<div class="col-lg-6">
 	<form action="${pageContext.request.contextPath}/taskType/add" method="post">
+<<<<<<< HEAD
 		<label class="col-lg-4 control-label" for="name">活动名称：</label><label class="col-lg-8"><input type="text" name="name" class="form-control"></label>
 		<label class="col-lg-4 control-label" for="description">活动描述：</label><label class="col-lg-8"><input type="text" name="description" class="form-control"></label>
 		<label class="col-lg-4 control-label" for="money">活动收入：</label><label class="col-lg-8"><input type="text" name="money" class="form-control"></label>
 		<label class="col-lg-4 control-label" for="unit">活动单位：</label>
 		<div class="col-lg-8">
+=======
+		<label class="col-lg-2 control-label" for="name">活动名称：</label><label class="col-lg-10"><input type="text" name="name" class="form-control"></label>
+		<label class="col-lg-2 control-label" for="description">活动描述：</label><label class="col-lg-10"><input type="text" name="description" class="form-control"></label>
+		<label class="col-lg-2 control-label" for="money">活动收入：</label><label class="col-lg-10"><input type="text" name="money" class="form-control"></label>
+		<label class="col-lg-2 control-label" for="unit">活动单位：</label>
+		<div class="col-lg-10">
+>>>>>>> 1398c9726c7ae0c272e65c7d8801dfe75e816bdb
 			<label class="radio-inline"><input type="radio" name="unit" value="R/天" checked> R/天</label>
 			<label class="radio-inline"><input type="radio" name="unit" value="R/周"> R/周</label>
 			<label class="radio-inline"><input type="radio" name="unit" value="R/月"> R/月</label>
 		</div>
+<<<<<<< HEAD
 		<div class="col-lg-offset-4 col-lg-8"><input type="submit" value="添加" class="btn btn-success">
 		<a href="${pageContext.request.contextPath}/taskType/index" class="btn btn-warning">返回</a></div>
+=======
+		<label class="col-lg-offset-2 col-lg-10"><input type="submit" value="添加" class="btn btn-success">
+		<a href="${pageContext.request.contextPath}/taskType/index" class="btn btn-warning">返回</a></label>
+>>>>>>> 1398c9726c7ae0c272e65c7d8801dfe75e816bdb
 	</form>
 	</div>
 	</div>

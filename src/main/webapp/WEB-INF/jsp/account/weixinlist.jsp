@@ -15,17 +15,28 @@
 	<table border="1" class="table table-hover">
 		<tr>
 			<td>序号</td>
+<<<<<<< HEAD
 			<td>微信号</td>
 			 <td>微信名</td>
 			<!--<td>手机号</td> 
+=======
+			<td>微信名</td>
+			<!-- <td>姓名</td>
+			<td>手机号</td> 
+>>>>>>> 1398c9726c7ae0c272e65c7d8801dfe75e816bdb
 			<td>操作</td>-->
 		</tr>
 		<c:forEach items="${list }" var="weixin" varStatus="s">
 		<tr>
 			<td>${s.count }</td>
 			<td>${weixin.weixinName }</td>
+<<<<<<< HEAD
 			<td>${weixin.realName }</td>
 			<%-- <td>${weixin.phone }</td> 
+=======
+			<%-- <td>${weixin.realName }</td>
+			<td>${weixin.phone }</td> 
+>>>>>>> 1398c9726c7ae0c272e65c7d8801dfe75e816bdb
 			<td>操作</td>--%>
 		</tr>
 		</c:forEach>

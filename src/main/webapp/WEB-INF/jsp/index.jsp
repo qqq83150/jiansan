@@ -32,8 +32,13 @@ $(function(){
 	<h1>欢迎您：<shiro:principal/> </h1>
 	
 	<button id="account" class="btn btn-primary">帐户管理</button>
+<<<<<<< HEAD
 	<button id="tasktype" class="btn btn-primary">活动管理</button>
 	<button id="task" class="btn btn-primary">任务管理</button>
+=======
+	<button id="task" class="btn btn-primary">任务管理</button>
+	<button id="tasktype" class="btn btn-primary">活动管理</button>
+>>>>>>> 1398c9726c7ae0c272e65c7d8801dfe75e816bdb
 	<button id="summary" class="btn btn-primary">统计管理</button>
 	<button id="system" class="btn btn-primary">系统管理</button>
 	<a href="${pageContext.request.contextPath}/logout" class="btn btn-warning">注销</a>

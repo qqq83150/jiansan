@@ -19,13 +19,21 @@
 		</div>
 		<div class="form-group">
 			<label class="control-label col-lg-4">游戏密码：</label>
+<<<<<<< HEAD
 			<label class="col-lg-8"><input type="text" name="password" class="form-control"></label>
+=======
+			<label class="col-lg-8"><input type="password" name="password" class="form-control"></label>
+>>>>>>> 1398c9726c7ae0c272e65c7d8801dfe75e816bdb
 		</div>
 		<div class="form-group">
 			<label class="control-label col-lg-4">微信：</label>
 			<label class="col-lg-8"><select name="weixinId" class="form-control">
 			<c:forEach items="${list }" var="wx">
+<<<<<<< HEAD
 				<option value="${wx.id }">${wx.realName }</option>
+=======
+				<option value="${wx.id }">${wx.weixinName }</option>
+>>>>>>> 1398c9726c7ae0c272e65c7d8801dfe75e816bdb
 			</c:forEach>
 		</select></label>
 		</div>

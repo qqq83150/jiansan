@@ -13,11 +13,19 @@
 	<div class="col-lg-6">
 	<form action="${pageContext.request.contextPath }/account/weixinAdd" method="post">
 		<div class="form-group">
+<<<<<<< HEAD
 			<label class="control-label col-lg-4">微信号：</label>
 			<label class="col-lg-8"><input type="text" name="weixinName" class="form-control"></label>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-lg-4">微信名：</label>
+=======
+			<label class="control-label col-lg-4">微信名：</label>
+			<label class="col-lg-8"><input type="text" name="weixinName" class="form-control"></label>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-lg-4">真实姓名：</label>
+>>>>>>> 1398c9726c7ae0c272e65c7d8801dfe75e816bdb
 			<label class="col-lg-8"><input type="text" name="realName" class="form-control"></label>
 		</div>
 		<div class="form-group">

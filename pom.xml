@@ -81,6 +81,7 @@
 
 	<build>
 		<plugins>
+<<<<<<< HEAD
 			<!--解决SpringBoot打包成jar后运行提示没有主清单属性-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -115,6 +116,13 @@
                 </includes>
          </resource>
      </resources>
+=======
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+>>>>>>> 1398c9726c7ae0c272e65c7d8801dfe75e816bdb
 	</build>
 
 </project>
