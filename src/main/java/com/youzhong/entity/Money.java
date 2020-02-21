@@ -13,9 +13,30 @@ public class Money {
     
     private GameRole gameRole;
     
+    private int taskId;
+    
+    private Task task;
+    
+    
     
 
-    public GameRole getGameRole() {
+    public int getTaskId() {
+		return taskId;
+	}
+
+	public void setTaskId(int taskId) {
+		this.taskId = taskId;
+	}
+
+	public Task getTask() {
+		return task;
+	}
+
+	public void setTask(Task task) {
+		this.task = task;
+	}
+
+	public GameRole getGameRole() {
 		return gameRole;
 	}
 

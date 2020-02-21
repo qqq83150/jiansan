@@ -5,8 +5,10 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="game_role_id" property="gameRoleId" jdbcType="INTEGER" />
     <result column="money" property="money" jdbcType="DOUBLE" />
+	<result column="task_id" property="taskId"/>
     <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
     <association property="gameRole" column="game_role_id" select="com.youzhong.dao.GameRoleMapper.selectByPrimaryKey"/>
+    <association property="task" column="task_id" select="com.youzhong.dao.TaskMapper.selectByPrimaryKey"/>
   </resultMap>
   
   <select id="getTotalMoney" resultType="double">
@@ -25,7 +27,7 @@
   	select ifnull(sum(money),0) money,extract(YEAR_MONTH FROM ctime) `date` from j_money group by extract(YEAR_MONTH FROM ctime) order by extract(YEAR_MONTH FROM ctime) desc
   </select>
   
-  <sql id="Example_Where_Clause" >
+   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
         <if test="criteria.valid" >
@@ -84,7 +86,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, game_role_id, money, ctime
+    id, game_role_id, money, task_id, ctime
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.youzhong.entity.MoneyExample" >
     select
@@ -118,9 +120,9 @@
   </delete>
   <insert id="insert" parameterType="com.youzhong.entity.Money" >
     insert into j_money (id, game_role_id, money, 
-      ctime)
+      task_id, ctime)
     values (#{id,jdbcType=INTEGER}, #{gameRoleId,jdbcType=INTEGER}, #{money,jdbcType=DOUBLE}, 
-      #{ctime,jdbcType=TIMESTAMP})
+      #{taskId,jdbcType=INTEGER}, #{ctime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.youzhong.entity.Money" >
     insert into j_money
@@ -133,6 +135,9 @@
       </if>
       <if test="money != null" >
         money,
+      </if>
+      <if test="taskId != null" >
+        task_id,
       </if>
       <if test="ctime != null" >
         ctime,
@@ -147,6 +152,9 @@
       </if>
       <if test="money != null" >
         #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="taskId != null" >
+        #{taskId,jdbcType=INTEGER},
       </if>
       <if test="ctime != null" >
         #{ctime,jdbcType=TIMESTAMP},
@@ -171,6 +179,9 @@
       <if test="record.money != null" >
         money = #{record.money,jdbcType=DOUBLE},
       </if>
+      <if test="record.taskId != null" >
+        task_id = #{record.taskId,jdbcType=INTEGER},
+      </if>
       <if test="record.ctime != null" >
         ctime = #{record.ctime,jdbcType=TIMESTAMP},
       </if>
@@ -184,6 +195,7 @@
     set id = #{record.id,jdbcType=INTEGER},
       game_role_id = #{record.gameRoleId,jdbcType=INTEGER},
       money = #{record.money,jdbcType=DOUBLE},
+      task_id = #{record.taskId,jdbcType=INTEGER},
       ctime = #{record.ctime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -198,6 +210,9 @@
       <if test="money != null" >
         money = #{money,jdbcType=DOUBLE},
       </if>
+      <if test="taskId != null" >
+        task_id = #{taskId,jdbcType=INTEGER},
+      </if>
       <if test="ctime != null" >
         ctime = #{ctime,jdbcType=TIMESTAMP},
       </if>
@@ -208,6 +223,7 @@
     update j_money
     set game_role_id = #{gameRoleId,jdbcType=INTEGER},
       money = #{money,jdbcType=DOUBLE},
+      task_id = #{taskId,jdbcType=INTEGER},
       ctime = #{ctime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
