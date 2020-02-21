@@ -106,7 +106,7 @@ $(function(){
 				</span>
 		</div>
 		<div>
-			<label class="col-lg-offset-2 col-lg-10"><input type="submit" value="查询" class="btn btn-primary"> <input type="reset" class="btn btn-warning"></label>
+			<label class="col-lg-offset-2"></label><input type="submit" value="查询" class="btn btn-primary"> <input type="reset" class="btn btn-warning">
 		</div>
 	</form>
 	</div>
@@ -144,10 +144,10 @@ $(function(){
 			<td>
 				<c:if test="${task.taskStatusId==1 }">
 					<a id="complete" href="javascript:void(0)" name="taskoperation" taskId="${task.id}" class="btn btn-info">做完</a>
+					<button name="pay" taskId="${task.id }" class="btn btn-success" data-toggle="modal" data-target="#myModal">付款</button>
+					<a id="close" href="javascript:void(0)" name="taskoperation" taskId="${task.id}" class="btn btn-danger">关闭</a>
+					<a id="revoke" href="javascript:void(0)" name="taskoperation" taskId="${task.id}" class="btn btn-danger">撤销</a>
 				</c:if>
-				<button name="pay" taskId="${task.id }" class="btn btn-success" data-toggle="modal" data-target="#myModal">付款</button>
-				<a id="close" href="javascript:void(0)" name="taskoperation" taskId="${task.id}" class="btn btn-danger">关闭</a>
-				<a id="revoke" href="javascript:void(0)" name="taskoperation" taskId="${task.id}" class="btn btn-danger">撤销</a>
 			</td>
 		</tr>
 		</c:forEach>
@@ -175,7 +175,7 @@ $(function(){
 				<label for="payStatus" class="col-lg-4 control-label">支付状态：</label>
 					<span id="payStatus" class="col-lg-8">
 						<%-- <label class="radio-inline"><input type="radio"  name="payStatusId" value="1" ${vo.payStatusId==1?'checked':''}>未支付</label> --%>
-						<label class="radio-inline"><input type="radio" class="radio-inline" name="payStatusId" value="2">已支付</label>
+						<label class="radio-inline"><input type="radio" class="radio-inline" name="payStatusId" value="2" checked>已支付</label>
 						<label class="radio-inline"><input type="radio" class="radio-inline" name="payStatusId" value="3">支付一部分</label>
 					</span>
 			</div>

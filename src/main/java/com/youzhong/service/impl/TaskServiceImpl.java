@@ -12,6 +12,7 @@ import com.youzhong.dao.MoneyMapper;
 import com.youzhong.dao.TaskLogMapper;
 import com.youzhong.dao.TaskMapper;
 import com.youzhong.entity.Money;
+import com.youzhong.entity.MoneyExample;
 import com.youzhong.entity.Task;
 import com.youzhong.entity.TaskExample;
 import com.youzhong.entity.TaskExample.Criteria;
@@ -90,7 +91,8 @@ public class TaskServiceImpl implements ITaskService {
 			task.setTaskStatusId(Dictionary.TASK_STATUS_CLOSE);
 			break;
 		case "revoke":
-			task.setTaskStatusId(Dictionary.TASK_STATUS_REVOKE);
+			task.setTaskStatusId(Dictionary.TASK_STATUS_REVOKE);//撤销
+			task.setPayStatusId(Dictionary.PAY_STATUS_NOT_COMPLETE_PAY);//未支付
 			break;
 		}
 		taskMapper.updateByPrimaryKey(task);
@@ -103,27 +105,10 @@ public class TaskServiceImpl implements ITaskService {
 		log.setTaskStatusId(task.getTaskStatusId());
 		log.setCtime(new Date());
 		taskLogMapper.insert(log);
-//		// 添加收入
-//		if (task.getPayStatusId() == Dictionary.PAY_STATUS_COMPLETED_PAY) {
-//			Money money = new Money();
-//			money.setGameRoleId(task.getGameRoleId());
-//
-//			Calendar c1 = Calendar.getInstance();
-//			c1.setTime(task.getEndDate());
-//
-//			Calendar c2 = Calendar.getInstance();
-//			c2.setTime(task.getBeginDate());
-//
-//			long endMillis = c1.getTime().getTime();
-//
-//			long startMillis = c2.getTime().getTime();
-//
-//			long day = (endMillis - startMillis) / (1000 * 60 * 60 * 24) + 1;
-//
-//			money.setMoney(task.getTaskType().getMoney() * day);
-//			money.setCtime(new Date());
-//			moneyMapper.insertSelective(money);
-//		}
+		// 删除旧收入
+		MoneyExample example = new MoneyExample();
+		example.createCriteria().andTaskIdEqualTo(task.getId());
+		moneyMapper.deleteByExample(example);
 	}
 
 	@Override
@@ -142,6 +127,7 @@ public class TaskServiceImpl implements ITaskService {
 		Money money = new Money();
 		money.setGameRoleId(task.getGameRoleId());
 		money.setMoney(taskLog.getMoney());
+		money.setTaskId(task.getId());
 		money.setCtime(new Date());
 		moneyMapper.insert(money);
 	}
