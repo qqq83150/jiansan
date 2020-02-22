@@ -12,6 +12,8 @@ public interface Dictionary {
 	
 	public static final int TASK_STATUS_REVOKE = 4;
 	
+	public static final int TASK_STATUS_COMPLETE_TODAY = 5;
+	
 	public static final int PAY_STATUS_NOT_COMPLETE_PAY = 1;
 	
 	public static final int PAY_STATUS_COMPLETED_PAY = 2;

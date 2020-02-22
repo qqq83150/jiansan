@@ -671,6 +671,66 @@ public class TaskExample {
             addCriterion("mtime not between", value1, value2, "mtime");
             return (Criteria) this;
         }
+
+        public Criteria andCompleteDateIsNull() {
+            addCriterion("complete_date is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompleteDateIsNotNull() {
+            addCriterion("complete_date is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompleteDateEqualTo(Date value) {
+            addCriterionForJDBCDate("complete_date =", value, "completeDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompleteDateNotEqualTo(Date value) {
+            addCriterionForJDBCDate("complete_date <>", value, "completeDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompleteDateGreaterThan(Date value) {
+            addCriterionForJDBCDate("complete_date >", value, "completeDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompleteDateGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("complete_date >=", value, "completeDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompleteDateLessThan(Date value) {
+            addCriterionForJDBCDate("complete_date <", value, "completeDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompleteDateLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("complete_date <=", value, "completeDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompleteDateIn(List<Date> values) {
+            addCriterionForJDBCDate("complete_date in", values, "completeDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompleteDateNotIn(List<Date> values) {
+            addCriterionForJDBCDate("complete_date not in", values, "completeDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompleteDateBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("complete_date between", value1, value2, "completeDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompleteDateNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("complete_date not between", value1, value2, "completeDate");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

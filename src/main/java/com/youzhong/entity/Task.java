@@ -30,6 +30,8 @@ public class Task {
 
     private Date mtime;
     
+    private Date completeDate;
+    
     //------------
     
     private GameRole gameRole;//游戏角色
@@ -42,7 +44,15 @@ public class Task {
     
     
 
-    public TaskStatus getTaskStatus() {
+    public Date getCompleteDate() {
+		return completeDate;
+	}
+
+	public void setCompleteDate(Date completeDate) {
+		this.completeDate = completeDate;
+	}
+
+	public TaskStatus getTaskStatus() {
 		return taskStatus;
 	}
 

@@ -61,7 +61,8 @@ create table j_task(
 	task_status_id int,
 	pay_status_id int,
 	ctime datetime,
-	mtime datetime
+	mtime datetime,
+	complete_date date
 );
 
 create table j_task_log(
@@ -80,6 +81,7 @@ create table j_money(
 	id int primary key auto_increment,
 	game_role_id int,
 	money double(10,2),
+	task_id int,
 	ctime timestamp default current_timestamp
 );
 

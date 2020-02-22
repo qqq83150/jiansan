@@ -47,15 +47,23 @@ public class TaskServiceImpl implements ITaskService {
 		TaskExample example = new TaskExample();
 		example.setOrderByClause("ctime desc");
 		Criteria criteria = example.createCriteria();
+		Criteria or = example.or();
 		if (vo != null) {
 			if (vo.getTaskTypeIds() != null && vo.getTaskTypeIds().size() > 0) {
-				criteria.andTaskTypeIdIn(vo.getTaskTypeIds());
+				criteria.andTaskTypeIdIn(vo.getTaskTypeIds());//根据活动模糊
+				or.andTaskTypeIdIn(vo.getTaskTypeIds());
 			}
-			criteria.andBeginDateLessThanOrEqualTo(vo.getTaskDate())//
+			criteria.andBeginDateLessThanOrEqualTo(vo.getTaskDate())//根据日期模糊
 					.andEndDateGreaterThanOrEqualTo(vo.getTaskDate());
-			criteria.andTaskStatusIdEqualTo(vo.getTaskStatusId());
+			or.andBeginDateLessThanOrEqualTo(vo.getTaskDate())//
+				.andEndDateGreaterThanOrEqualTo(vo.getTaskDate());
+			criteria.andCompleteDateLessThan(new Date());
+			or.andCompleteDateIsNull();//完成日期小于今天，也就是前几天完成的，今天依然展示
+			criteria.andTaskStatusIdEqualTo(vo.getTaskStatusId());//根据任务状态模糊，默认新建
+			or.andTaskStatusIdEqualTo(vo.getTaskStatusId());
 			if (vo.getPayStatusId() != 0) {
 				criteria.andPayStatusIdEqualTo(vo.getPayStatusId());
+				or.andPayStatusIdEqualTo(vo.getPayStatusId());
 			}
 		}
 
@@ -86,29 +94,38 @@ public class TaskServiceImpl implements ITaskService {
 		switch (name) {
 		case "complete":
 			task.setTaskStatusId(Dictionary.TASK_STATUS_COMPLETE);
+			task.setCompleteDate(new Date());
 			break;
 		case "close":
 			task.setTaskStatusId(Dictionary.TASK_STATUS_CLOSE);
 			break;
 		case "revoke":
-			task.setTaskStatusId(Dictionary.TASK_STATUS_REVOKE);//撤销
-			task.setPayStatusId(Dictionary.PAY_STATUS_NOT_COMPLETE_PAY);//未支付
+			task.setTaskStatusId(Dictionary.TASK_STATUS_REVOKE);// 撤销
+			task.setPayStatusId(Dictionary.PAY_STATUS_NOT_COMPLETE_PAY);// 未支付
 			break;
+		case "completetoday":
+			task.setCompleteDate(new Date());
 		}
-		taskMapper.updateByPrimaryKey(task);
+		taskMapper.updateByPrimaryKeySelective(task);
 		// 添加日志
 		TaskLog log = new TaskLog();
 		log.setTaskId(task.getId());
 		log.setTaskTypeId(task.getTaskTypeId());
 		log.setGameRoleId(task.getGameRoleId());
 		log.setPayStatusId(task.getPayStatusId());
-		log.setTaskStatusId(task.getTaskStatusId());
+		if (name.equals("completetoday")) {
+			log.setTaskStatusId(Dictionary.TASK_STATUS_COMPLETE_TODAY);
+		} else {
+			log.setTaskStatusId(task.getTaskStatusId());
+		}
 		log.setCtime(new Date());
 		taskLogMapper.insert(log);
 		// 删除旧收入
-		MoneyExample example = new MoneyExample();
-		example.createCriteria().andTaskIdEqualTo(task.getId());
-		moneyMapper.deleteByExample(example);
+		if (name.equals("revoke")) {
+			MoneyExample example = new MoneyExample();
+			example.createCriteria().andTaskIdEqualTo(task.getId());
+			moneyMapper.deleteByExample(example);
+		}
 	}
 
 	@Override
@@ -120,7 +137,7 @@ public class TaskServiceImpl implements ITaskService {
 		taskLog.setTaskStatusId(task.getTaskStatusId());
 		taskLog.setCtime(new Date());
 		taskLogMapper.insert(taskLog);
-		//修改任务状态
+		// 修改任务状态
 		task.setPayStatusId(taskLog.getPayStatusId());
 		taskMapper.updateByPrimaryKeySelective(task);
 		// 添加收入记录

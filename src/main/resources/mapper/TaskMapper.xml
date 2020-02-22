@@ -11,13 +11,13 @@
     <result column="pay_status_id" property="payStatusId" jdbcType="INTEGER" />
     <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
     <result column="mtime" property="mtime" jdbcType="TIMESTAMP" />
+    <result column="complete_date" property="completeDate" jdbcType="DATE" />
     <association property="gameRole" column="game_role_id" select="com.youzhong.dao.GameRoleMapper.selectByPrimaryKey"/>
     <association property="taskType" column="task_type_id" select="com.youzhong.dao.TaskTypeMapper.selectByPrimaryKey"/>
     <association property="taskStatus" column="task_status_id" select="com.youzhong.dao.TaskStatusMapper.selectByPrimaryKey"/>
     <association property="payStatus" column="pay_status_id" select="com.youzhong.dao.PayStatusMapper.selectByPrimaryKey"/>
+  
   </resultMap>
-  
-  
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -78,7 +78,7 @@
   </sql>
   <sql id="Base_Column_List" >
     id, game_role_id, task_type_id, begin_date, end_date, task_status_id, pay_status_id, 
-    ctime, mtime
+    ctime, mtime, complete_date
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.youzhong.entity.TaskExample" >
     select
@@ -113,12 +113,12 @@
   <insert id="insert" parameterType="com.youzhong.entity.Task" >
     insert into j_task (id, game_role_id, task_type_id, 
       begin_date, end_date, task_status_id, 
-      pay_status_id, ctime, mtime
-      )
+      pay_status_id, ctime, mtime, 
+      complete_date)
     values (#{id,jdbcType=INTEGER}, #{gameRoleId,jdbcType=INTEGER}, #{taskTypeId,jdbcType=INTEGER}, 
       #{beginDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, #{taskStatusId,jdbcType=INTEGER}, 
-      #{payStatusId,jdbcType=INTEGER}, #{ctime,jdbcType=TIMESTAMP}, #{mtime,jdbcType=TIMESTAMP}
-      )
+      #{payStatusId,jdbcType=INTEGER}, #{ctime,jdbcType=TIMESTAMP}, #{mtime,jdbcType=TIMESTAMP}, 
+      #{completeDate,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="com.youzhong.entity.Task" >
     insert into j_task
@@ -150,6 +150,9 @@
       <if test="mtime != null" >
         mtime,
       </if>
+      <if test="completeDate != null" >
+        complete_date,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -178,6 +181,9 @@
       </if>
       <if test="mtime != null" >
         #{mtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completeDate != null" >
+        #{completeDate,jdbcType=DATE},
       </if>
     </trim>
   </insert>
@@ -217,6 +223,9 @@
       <if test="record.mtime != null" >
         mtime = #{record.mtime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.completeDate != null" >
+        complete_date = #{record.completeDate,jdbcType=DATE},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -232,7 +241,8 @@
       task_status_id = #{record.taskStatusId,jdbcType=INTEGER},
       pay_status_id = #{record.payStatusId,jdbcType=INTEGER},
       ctime = #{record.ctime,jdbcType=TIMESTAMP},
-      mtime = #{record.mtime,jdbcType=TIMESTAMP}
+      mtime = #{record.mtime,jdbcType=TIMESTAMP},
+      complete_date = #{record.completeDate,jdbcType=DATE}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -264,6 +274,9 @@
       <if test="mtime != null" >
         mtime = #{mtime,jdbcType=TIMESTAMP},
       </if>
+      <if test="completeDate != null" >
+        complete_date = #{completeDate,jdbcType=DATE},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -276,7 +289,8 @@
       task_status_id = #{taskStatusId,jdbcType=INTEGER},
       pay_status_id = #{payStatusId,jdbcType=INTEGER},
       ctime = #{ctime,jdbcType=TIMESTAMP},
-      mtime = #{mtime,jdbcType=TIMESTAMP}
+      mtime = #{mtime,jdbcType=TIMESTAMP},
+      complete_date = #{completeDate,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -21,9 +21,10 @@ insert into j_task_type values (null,'活动3','无',35.0,'R/日','2020-02-17 02
 
 -- 添加任务状态
 insert into j_task_status values (null,'新建');
-insert into j_task_status values (null,'已做完');
+insert into j_task_status values (null,'做完');
 insert into j_task_status values (null,'关闭');
 insert into j_task_status values (null,'撤销');
+insert into j_task_status values (null,'今日做完');
 
 -- 添加支付状态
 insert into j_pay_status values (null,'未支付');

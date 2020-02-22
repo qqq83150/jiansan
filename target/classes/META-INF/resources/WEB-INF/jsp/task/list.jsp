@@ -64,6 +64,11 @@ $(function(){
 				return
 			}
 		}
+		if(opname=='completetoday'){
+			if(!confirm('今日已做完此任务，如果任务没有到期或关闭，明日继续展示此任务！')){
+				return
+			}
+		}
 		$.post('${pageContext.request.contextPath}/task/update/'+opname+'/'+taskId,function(result){
 			$('#taskform').submit()
 		})
@@ -143,8 +148,9 @@ $(function(){
 			<td><fmt:formatDate value="${task.ctime }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 			<td>
 				<c:if test="${task.taskStatusId==1 }">
-					<a id="complete" href="javascript:void(0)" name="taskoperation" taskId="${task.id}" class="btn btn-info">做完</a>
+					<a id="completetoday" href="javascript:void(0)" name="taskoperation" taskId="${task.id}" class="btn btn-info">今日做完</a>
 					<button name="pay" taskId="${task.id }" class="btn btn-success" data-toggle="modal" data-target="#myModal">付款</button>
+					<a id="complete" href="javascript:void(0)" name="taskoperation" taskId="${task.id}" class="btn btn-info">做完</a>
 					<a id="close" href="javascript:void(0)" name="taskoperation" taskId="${task.id}" class="btn btn-danger">关闭</a>
 					<a id="revoke" href="javascript:void(0)" name="taskoperation" taskId="${task.id}" class="btn btn-danger">撤销</a>
 				</c:if>
